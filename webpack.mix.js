@@ -6,4 +6,5 @@ mix.options({
 });
 
 mix
-  .js('main.js' , 'main.min.js')
+  .js('test/js/main.js' , 'test/js/main.min.js')
+  .sass('dist/sass/toast.scss' , 'test/css/toast.css')

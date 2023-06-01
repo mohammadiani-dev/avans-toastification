@@ -1,4 +1,4 @@
-import {toast} from './script.js';
+import {toast} from '../../dist/js/script';
 
 toast.options = {};
 

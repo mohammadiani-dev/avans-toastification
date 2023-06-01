@@ -1,3 +1,4 @@
 {
-    "/main.min.js": "/main.min.js"
+    "/test/js/main.min.js": "/test/js/main.min.js",
+    "/test/css/toast.css": "/test/css/toast.css"
 }
