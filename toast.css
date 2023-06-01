@@ -1,0 +1,73 @@
+#hello-notification {
+  width: 350px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding-top: 24px;
+  padding-right: 24px;
+}
+#hello-notification .notif-item {
+  background: #eee;
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  margin-bottom: 16px;
+}
+#hello-notification .notif-item .notif-icon {
+  flex-basis: 60px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-right: 8px;
+}
+#hello-notification .notif-item .notif-icon svg {
+  padding: 8px;
+  border-radius: 50%;
+  fill: #fff;
+}
+#hello-notification .notif-item .notif-desc .notif-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+#hello-notification .notif-item .notif-desc .notif-content {
+  margin-bottom: 0;
+  color: #5a5a5a;
+}
+#hello-notification .notif-item.success {
+  border-left: 4px solid #00924b;
+}
+#hello-notification .notif-item.success .notif-title {
+  color: #00924b;
+}
+#hello-notification .notif-item.success .notif-icon svg {
+  background: #00924b;
+}
+#hello-notification .notif-item.warning {
+  border-left: 4px solid #FF9800;
+}
+#hello-notification .notif-item.warning .notif-title {
+  color: #FF9800;
+}
+#hello-notification .notif-item.warning .notif-icon svg {
+  background: #FF9800;
+}
+#hello-notification .notif-item.info {
+  border-left: 4px solid #03a9f4;
+}
+#hello-notification .notif-item.info .notif-title {
+  color: #03a9f4;
+}
+#hello-notification .notif-item.info .notif-icon svg {
+  background: #03a9f4;
+}
+#hello-notification .notif-item.error {
+  border-left: 4px solid #f44336;
+}
+#hello-notification .notif-item.error .notif-title {
+  color: #f44336;
+}
+#hello-notification .notif-item.error .notif-icon svg {
+  background: #f44336;
+}
+
+/*# sourceMappingURL=toast.css.map */
