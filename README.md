@@ -1,12 +1,9 @@
 # avans-toastification
 **avans-toastification** is a Javascript library for non-blocking notifications. 
 
-## Current Version
-1.0.0
 
 ## Demo
-It will be added soon
-
+https://mohammadiani.com/avans-toastification/
 
 
 ## Install
@@ -22,36 +19,73 @@ npm i avans-toastification
 
 ```javascript
 import { toast } from "avans-toastification/js/script";
-// Import the CSS or use your own!
+// Import the CSS
 import "avans-toastification/css/toast.css";
 
 toast.options.duration = 50000;
-toast.options.direction = 'rtl';
 
-toast.fire({ type, msg, title });
+toast.fire({ type : 'success', msg : 'Enter the message here', title : 'Enter the title here' });
 
 ```
 
-### Other Options
+### For Example
 ```js
 // Display a success toast, with a title
-toast.fire({ 'success' , 'You have successfully received the certificate!', 'Hooray!' })
+toast.fire({ type : 'success' , msg : 'You have successfully received the certificate!', title : 'Hooray!' })
 
 // Display a warning toast, with no title
-toast.fire({ 'warning' , 'You do not have the necessary conditions to receive a certificate!' })
+toast.fire({ type : 'warning' ,  msg :  'You do not have the necessary conditions to receive a certificate!' })
 
 // Display a info toast, with no title
-toast.fire({ 'info' , 'You have received three certificates so far!' })
+toast.fire({ type : 'info' , msg :  'You have received three certificates so far!' })
 
 // Display an error toast, with a title
-toast.fire({ 'error' , 'An error occurred while creating the certificate!', 'error!' })
+toast.fire({ type : 'error' , msg :  'An error occurred while creating the certificate!', title : 'error!' })
 ```
 
-### Close Button
-Optionally enable a close button
+
+
+### Options
 ```js
+
+//Optionally disable a close button
 toast.options.showCloseIcon = true;
+
+//Visually indicate how long before a toast expires.
+toast.options.showProgressbar = true;
+
+//Flip the avans-toastification to be displayed properly for right-to-left languages.
+toast.options.direction = 'rtl';
+
+// Show or hide the icon
+toast.options.showImageIcon = true;
+
+// change the icon url in a toasts
+toast.options.icon_url.success = 'https://yoursite.com/success.png';
+
+// Change the duration of the toast display
+toast.options.duration = 5000;
+
+// Change the position of toasts on the page
+toast.options.position = 'top-right';
+
+// Change the background of a toasts
+toast.options.backgroundColor = '#000';
+
+// Change the color of the title of a toast
+toast.options.titleColor = '#fff';
+
+// Change the color of the content of a toast
+toast.options.contentColor = '#eee';
+
+// Change the border-radius of a toast
+toast.options.borderRadius = '12px';
+
+// Change the thickness of the border of a toast
+toast.options.progressbarWidth = '5px';
+
 ```
+
 
 ### Callbacks
 ```js
@@ -60,18 +94,3 @@ toast.options.onCreated = function() { console.log('hello'); }
 toast.options.onClosed = function() { console.log('goodbye'); }
 ```
 
-
-### Progress Bar
-Visually indicate how long before a toast expires.
-```js
-toast.options.showProgressbar = true;
-```
-
-### rtl
-Flip the avans-toastification to be displayed properly for right-to-left languages.
-```js
-toast.options.direction = 'rtl';
-```
-
-## Copyright
-Copyright © 2023

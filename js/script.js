@@ -1,58 +1,73 @@
-var warapper = document.createElement("div");
-warapper.setAttribute("id", "hello-notification");
+var warapper = document.getElementById("avans-toastification");
+
+if ( !warapper ) {
+    warapper = document.createElement( "div" );
+    warapper.setAttribute( "id", "avans-toastification" );
+}
 
 document.body.appendChild(warapper);
 
 let options = {
-    icon_url : "",
-    duration : 5000,
-    position : "top right",
-    direction: "",
-    backgroundColor: "",
-    showProgressbar : true,
-    showCloseIcon: true,
-    showImageIcon: true,
-    progressbarColor: '',
-    progressbarWidth: '',
-    titleColor: '',
-    contentColor: '',
-    borderRadius: '',
-    onCreated : null,
-    onClosed : null,
+    icon_url: {
+        success: "",
+        warning: "",
+        error  : "",
+        info   : ""
+    },
+    duration         : 5000,
+    position         : "top-right",
+    direction        : "",
+    backgroundColor  : "",
+    showProgressbar  : true,
+    showCloseIcon    : true,
+    showImageIcon    : true,
+    progressbarColor : '',
+    progressbarWidth : '',
+    titleColor       : '',
+    contentColor     : '',
+    borderRadius     : '',
+    onCreated        : null,
+    onClosed         : null,
 };
 
 
 function fire({ type, msg, title }) {
     
-    var item = document.createElement("div");
+    if (options.position.length) {
+        warapper.classList = options.position;
+    }
+    
+    var item = document.createElement( "div" );
     item.classList = `notif-item ${type} ${options.direction}`;
 
     toast = ``;
 
-    if (options.showImageIcon) {
+    if ( options.showImageIcon ) {
         var toast = `<div class="notif-icon" >`;
-        if (options.icon_url.length) {
-            toast += `<img width='24' height="24" src="${options.icon_url}" alt='${type}'>`
+
+        if ( options.icon_url[type].length ) {
+            toast += `<img width='24' height="24" src="${options.icon_url[type]}" alt='${type}'>`
         } else {
             toast += get_default_icon(type);
         }
+
         toast += `</div>`;
     }
     
     toast += `<div class="notif-desc" style="${!options.showImageIcon ? 'padding: 0 12px' : ''}">`;
     
-    if (title.length) {
+    if ( title.length ) {
         toast += `<strong class="notif-title"  style="${options.titleColor.length ? 'color:' + options.titleColor : ''}" >${title}</strong>`;
     }
 
-    if (msg.length) {
+    if ( msg.length ) {
         toast += `<p class="notif-content" style="${options.contentColor.length ? 'color:' + options.contentColor : ''}" >${msg}</p>`;
     }
 
     
     toast += `</div>`;
 
-    if (options.showProgressbar) {
+    if ( options.showProgressbar ) {
         toast += `<div class="notif-progressbar" style="animation-duration: ${options.duration / 1000}s;${options.progressbarWidth.length ? 'height : ' + options.progressbarWidth : ''}"></div>`;
     }
 
@@ -60,36 +75,43 @@ function fire({ type, msg, title }) {
     item.innerHTML = toast;
 
     if (options.showCloseIcon) {
+        
         var closeIcon = document.createElement("span");
         closeIcon.className = "close-notif";
         closeIcon.innerHTML = get_close_icon();
+
         item.appendChild(closeIcon);
 
-        closeIcon.addEventListener("click", function (e) {
+        closeIcon.addEventListener( "click" , function (e) {
             closeItem(item);
             clearTimeout(clearTimeOut);
             if (options.onClosed) {
                 options['onClosed']();
             }
-        });
+        } );
+
     }
 
-    if (options.borderRadius.length) {
+    if ( options.borderRadius.length ) {
         item.style.borderRadius = options.borderRadius;
     }
 
-    if (options.backgroundColor.length) {
+    if ( options.backgroundColor.length ) {
         item.style.backgroundColor = options.backgroundColor;
     }
     
-    warapper.appendChild(item);
+    if ( options.position == 'bottom-left' || options.position == 'bottom-right' ) {
+        warapper.insertBefore(item, warapper.children[0]);
+    } else {
+        warapper.appendChild(item);
+    }
 
-    let clearTimeOut = setTimeout(function () {
+    let clearTimeOut = setTimeout( function () {
         closeItem(item);
-        if (options.onClosed) {
+        if ( options.onClosed ) {
             options['onClosed']();
         }  
-    }, options.duration);
+    }, options.duration );
 
 
     if (options.onCreated) {
@@ -101,7 +123,7 @@ function fire({ type, msg, title }) {
 
 
 function closeItem(item) {
-    item.style.animationName = "closeToast";
+    item.style.animationName = options.position == 'top-left' || options.position == 'bottom-left' ?  "closeToastFromLeft" : "closeToastFromRight";
     setTimeout(function () {
         item.remove();
     }, 300);

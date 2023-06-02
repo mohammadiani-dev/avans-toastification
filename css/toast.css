@@ -1,41 +1,74 @@
-#hello-notification {
+#avans-toastification {
   width: 350px;
+  max-width: 100%;
   position: fixed;
+  padding-right: 12px;
+  padding-left: 12px;
+  box-sizing: border-box;
+}
+#avans-toastification.top-right {
+  padding-top: 12px;
   right: 0;
   top: 0;
-  padding-top: 24px;
-  padding-right: 24px;
 }
-#hello-notification .notif-item {
+#avans-toastification.top-right .notif-item {
+  animation: openToastFromRight 0.5s forwards;
+}
+#avans-toastification.top-left {
+  padding-top: 12px;
+  left: 0;
+  top: 0;
+}
+#avans-toastification.top-left .notif-item {
+  animation: openToastFromLeft 0.5s forwards;
+}
+#avans-toastification.bottom-right {
+  padding-bottom: 12px;
+  right: 0;
+  bottom: 0;
+}
+#avans-toastification.bottom-right .notif-item {
+  animation: openToastFromRight 0.5s forwards;
+}
+#avans-toastification.bottom-left {
+  padding-bottom: 12px;
+  left: 0;
+  bottom: 0;
+}
+#avans-toastification.bottom-left .notif-item {
+  animation: openToastFromLeft 0.5s forwards;
+}
+#avans-toastification .notif-item {
+  max-width: 100%;
   background: rgba(255, 255, 255, 0.5411764706);
   direction: ltr;
   box-shadow: 0 0 10px rgba(170, 170, 170, 0.3529411765);
   border-radius: 4px;
   padding: 16px 8px;
   display: flex;
-  margin-bottom: 16px;
+  margin: 8px 0;
   transition: 0.3s;
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  animation: openToast 0.5s forwards;
 }
-#hello-notification .notif-item.rtl {
+#avans-toastification .notif-item.rtl {
   direction: rtl;
 }
-#hello-notification .notif-item.rtl .notif-progressbar {
+#avans-toastification .notif-item.rtl .notif-progressbar {
   right: 0;
   left: auto;
 }
-#hello-notification .notif-item.rtl .close-notif {
+#avans-toastification .notif-item.rtl .close-notif {
   left: 0;
   right: auto;
+  border-radius: 0 0 8px 0;
 }
-#hello-notification .notif-item.rtl .notif-icon {
+#avans-toastification .notif-item.rtl .notif-icon {
   margin-left: 8px;
   margin-right: 0;
 }
-#hello-notification .notif-item .notif-progressbar {
+#avans-toastification .notif-item .notif-progressbar {
   height: 2px;
   position: absolute;
   left: 0;
@@ -44,35 +77,35 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
-#hello-notification .notif-item .notif-icon {
+#avans-toastification .notif-item .notif-icon {
   flex-basis: 60px;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   margin-right: 8px;
 }
-#hello-notification .notif-item .notif-icon svg {
+#avans-toastification .notif-item .notif-icon svg {
   padding: 8px;
   border-radius: 50%;
   fill: #fff;
 }
-#hello-notification .notif-item .notif-desc {
+#avans-toastification .notif-item .notif-desc {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-#hello-notification .notif-item .notif-desc .notif-title {
+#avans-toastification .notif-item .notif-desc .notif-title {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 4px;
 }
-#hello-notification .notif-item .notif-desc .notif-content {
+#avans-toastification .notif-item .notif-desc .notif-content {
   margin-top: 0;
   margin-bottom: 0;
   color: #5a5a5a;
   font-size: 14px;
 }
-#hello-notification .notif-item span.close-notif {
+#avans-toastification .notif-item span.close-notif {
   position: absolute;
   background: rgba(238, 238, 238, 0.3529411765);
   width: 20px;
@@ -82,76 +115,98 @@
   justify-content: center;
   transition: 0.3s;
   cursor: pointer;
-  left: 0;
+  right: 0;
   top: 0;
-  border-radius: 0 0 8px 0;
+  border-radius: 0 0 0 8px;
 }
-#hello-notification .notif-item span.close-notif svg {
+#avans-toastification .notif-item span.close-notif svg {
   width: 8px;
   height: 8px;
   color: #aaa;
   transition: 0.3s;
 }
-#hello-notification .notif-item span.close-notif:hover svg {
+#avans-toastification .notif-item span.close-notif:hover svg {
   color: #000;
 }
-#hello-notification .notif-item.success .notif-progressbar {
+#avans-toastification .notif-item.success .notif-progressbar {
   background: #66bb6a;
 }
-#hello-notification .notif-item.success .notif-title {
+#avans-toastification .notif-item.success .notif-title {
   color: #66bb6a;
 }
-#hello-notification .notif-item.success .notif-icon svg {
+#avans-toastification .notif-item.success .notif-icon svg {
   background: #66bb6a;
 }
-#hello-notification .notif-item.warning .notif-progressbar {
+#avans-toastification .notif-item.warning .notif-progressbar {
   background: #ffa726;
 }
-#hello-notification .notif-item.warning .notif-title {
+#avans-toastification .notif-item.warning .notif-title {
   color: #ffa726;
 }
-#hello-notification .notif-item.warning .notif-icon svg {
+#avans-toastification .notif-item.warning .notif-icon svg {
   background: #ffa726;
 }
-#hello-notification .notif-item.info .notif-progressbar {
+#avans-toastification .notif-item.info .notif-progressbar {
   background: #29b6f6;
 }
-#hello-notification .notif-item.info .notif-title {
+#avans-toastification .notif-item.info .notif-title {
   color: #29b6f6;
 }
-#hello-notification .notif-item.info .notif-icon svg {
+#avans-toastification .notif-item.info .notif-icon svg {
   background: #29b6f6;
 }
-#hello-notification .notif-item.error .notif-progressbar {
+#avans-toastification .notif-item.error .notif-progressbar {
   background: #f44336;
 }
-#hello-notification .notif-item.error .notif-title {
+#avans-toastification .notif-item.error .notif-title {
   color: #f44336;
 }
-#hello-notification .notif-item.error .notif-icon svg {
+#avans-toastification .notif-item.error .notif-icon svg {
   background: #f44336;
 }
 
-@keyframes openToast {
+@keyframes openToastFromRight {
   0% {
-    transform: translate(calc(100% + 24px));
+    transform: translate(calc(100% + 12px));
   }
   70% {
-    transform: translate(-24px);
+    transform: translate(-12px);
   }
   100% {
     transform: translate(0);
   }
 }
-@keyframes closeToast {
+@keyframes openToastFromLeft {
+  0% {
+    transform: translate(calc(-12px - 100%));
+  }
+  70% {
+    transform: translate(12px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes closeToastFromRight {
   0% {
     transform: translate(0);
   }
   10% {
-    transform: translate(-24px);
+    transform: translate(-12px);
   }
   100% {
-    transform: translate(calc(100% + 24px));
+    transform: translate(calc(100% + 12px));
+  }
+}
+@keyframes closeToastFromLeft {
+  0% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(12px);
+  }
+  100% {
+    transform: translate(calc(-12px - 100%));
   }
 }
 @keyframes fillProgressBar {

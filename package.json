@@ -1,6 +1,6 @@
 {
   "name": "avans-toastification",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A powerful toast module for JavaScript",
   "main": "index.js",
   "scripts": {
