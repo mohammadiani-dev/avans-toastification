@@ -45,14 +45,12 @@ toast.fire({ 'info' , 'You have received three certificates so far!' })
 
 // Display an error toast, with a title
 toast.fire({ 'error' , 'An error occurred while creating the certificate!', 'error!' })
-
+```
 
 ### Close Button
 Optionally enable a close button
 ```js
 toast.options.showCloseIcon = true;
-````
-
 ```
 
 ### Callbacks
@@ -61,10 +59,6 @@ toast.options.showCloseIcon = true;
 toast.options.onCreated = function() { console.log('hello'); }
 toast.options.onClosed = function() { console.log('goodbye'); }
 ```
-
-
-
-
 
 
 ### Progress Bar
