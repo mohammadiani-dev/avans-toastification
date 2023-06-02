@@ -1,0 +1,189 @@
+$successColor : #66bb6a;
+$warningColor : #ffa726;
+$infoColor : #29b6f6;
+$errorColor : #f44336;
+
+#hello-notification{
+    width: 350px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding-top: 24px;
+    padding-right: 24px;
+    .notif-item{
+        background: #ffffff8a;
+        direction: ltr;
+        box-shadow: 0 0 10px #aaaaaa5a;
+        border-radius: 4px;
+        padding: 16px 8px;
+        display: flex;
+        margin-bottom: 16px;
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        animation: openToast 0.5s forwards;
+        &.rtl {
+            direction: rtl;
+            .notif-progressbar{
+                right: 0;
+                left: auto;
+            }
+            .close-notif{
+                left: 0;
+                right: auto;
+            }
+            .notif-icon{
+                margin-left: 8px;
+                margin-right: 0;
+            }
+        }
+        .notif-progressbar{
+            height: 2px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            animation-name: fillProgressBar;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+        .notif-icon{
+            flex-basis: 60px;
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            margin-right: 8px;
+            svg{
+                padding: 8px;
+                border-radius: 50%;
+                fill: #fff;
+            }
+        }
+        .notif-desc{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            .notif-title{
+                font-weight: 700;
+                font-size: 18px;
+                margin-bottom: 4px;
+            }
+            .notif-content{
+                margin-top: 0;
+                margin-bottom: 0;
+                color: #5a5a5a;
+                font-size: 14px;
+            }
+        }
+
+        span.close-notif {
+            position: absolute;
+            background: #eeeeee5a;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            cursor: pointer;
+            left: 0;
+            top: 0;
+            border-radius: 0 0 8px 0;
+            svg {
+                width: 8px;
+                height: 8px;
+                color: #aaa;
+                transition: 0.3s;
+            }
+            &:hover {
+                svg {
+                    color: #000;
+                }
+            }
+        }
+        
+        &.success{
+            .notif-progressbar{
+                background: $successColor;
+            }
+            .notif-title{
+                color: $successColor;
+            }
+            .notif-icon svg{
+                background: $successColor;
+            }
+        }
+        &.warning {
+            .notif-progressbar {
+                background: $warningColor;
+            }
+            .notif-title {
+                color: $warningColor;
+            }
+
+            .notif-icon svg {
+                background: $warningColor;
+            }
+        }
+        &.info {
+            .notif-progressbar {
+                background: $infoColor;
+            }
+            .notif-title {
+                color: $infoColor;
+            }
+
+            .notif-icon svg {
+                background: $infoColor;
+            }
+        }
+        &.error {
+            .notif-progressbar {
+                background: $errorColor;
+            }
+            .notif-title {
+                color: $errorColor;
+            }
+
+            .notif-icon svg {
+                background: $errorColor;
+            }
+        }
+    }
+}
+
+
+@keyframes openToast {
+    0%{
+        transform: translate(calc(100% + 24px));
+    }
+    70%{
+        transform: translate(-24px);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+
+@keyframes closeToast {
+    0% {
+        transform: translate(0);
+    }
+    
+    10% {
+        transform: translate(-24px);
+    }
+    
+    100% {
+        transform: translate(calc(100% + 24px));
+    }
+}
+
+@keyframes fillProgressBar{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
