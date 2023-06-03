@@ -40,7 +40,7 @@
 }
 #avans-toastification .notif-item {
   max-width: 100%;
-  background: rgba(255, 255, 255, 0.5411764706);
+  background: #fff;
   direction: ltr;
   box-shadow: 0 0 10px rgba(170, 170, 170, 0.3529411765);
   border-radius: 4px;
@@ -214,6 +214,11 @@
     width: 0;
   }
   100% {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  #avans-toastification {
     width: 100%;
   }
 }

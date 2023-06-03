@@ -46,7 +46,7 @@ $errorColor : #f44336;
 
     .notif-item {
         max-width: 100%;
-        background: #ffffff8a;
+        background: #fff;
         direction: ltr;
         box-shadow: 0 0 10px #aaaaaa5a;
         border-radius: 4px;
@@ -270,6 +270,13 @@ $errorColor : #f44336;
     }
 
     100% {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width:480px) {
+    #avans-toastification{
         width: 100%;
     }
 }
